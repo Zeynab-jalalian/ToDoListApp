@@ -136,3 +136,7 @@ button{
     height: 20px;
     cursor: pointer;
 }
+.completed p{
+    text-decoration: line-through;
+    color: var(--second-color);
+}
