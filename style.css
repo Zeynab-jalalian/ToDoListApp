@@ -47,13 +47,15 @@ body {
     border-radius: 5px;
     margin-top: 20px;
 }
-#progress{
-    width: 30%;
+
+#progress {
+    width: 0;
     height: 10px;
     background: var(--second-color);
     border-radius: 10px;
     transition: all 0.3s ease;
 }
+
 #numbers {
     width: 100px;
     height: 100px;
@@ -66,22 +68,24 @@ body {
     font-weight: bold;
 }
 
-form{
+form {
     margin-top: 60px;
     width: 100%;
     display: flex;
     gap: 10px;
 }
-input{
+
+input {
     flex: 1;
     padding: 16px;
-    background-color:var(--second-bg);
+    background-color: var(--second-bg);
     border: 1px solid var(--main-color);
     border-radius: 10px;
     outline: none;
     color: var(--text-color);
 }
-button{
+
+button {
     padding: 16px;
     width: 50px;
     height: 50px;
@@ -99,7 +103,7 @@ button{
 }
 
 
-#task-list{
+#task-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -107,7 +111,8 @@ button{
     width: 100%;
     list-style: none;
 }
-.taskItem{
+
+.taskItem {
     width: 100%;
     display: flex;
     background: var(--second-bg);
@@ -116,27 +121,32 @@ button{
     justify-content: space-between;
     align-items: center;
 }
-.taskItem img{
+
+.taskItem img {
     width: 24px;
     height: 24px;
 }
-.task{
+
+.task {
     display: flex;
     align-items: center;
     gap: 10px;
 }
-.taskItem img{
+
+.taskItem img {
     width: 24px;
     height: 24px;
     margin: 0 10px;
     cursor: pointer;
 }
-.task input{
+
+.task input {
     width: 20px;
     height: 20px;
     cursor: pointer;
 }
-.completed p{
+
+.completed p {
     text-decoration: line-through;
     color: var(--second-color);
 }
