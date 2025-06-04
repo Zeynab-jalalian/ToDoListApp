@@ -1,8 +1,8 @@
-document.addEventListener('DOMContentLoaded',()=>{
-    const storedTasks=JSON.parse(localStorage.getItem('tasks'))
+document.addEventListener('DOMContentLoaded', () => {
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'))
 
-    if(storedTasks){
-        storedTasks.forEach((task)=>tasks.push(task));
+    if (storedTasks) {
+        storedTasks.forEach((task) => tasks.push(task));
         updateTasksList();
         updateStats();
     }
@@ -51,6 +51,10 @@ const updateStats = () => {
     progressBar.style.width = `${progress}%`
 
     document.getElementById("numbers").innerText = `${completeTasks} / ${totalTasks}`;
+
+    if (tasks.length && completeTasks === totalTasks) {
+        wow();
+    }
 }
 const updateTasksList = () => {
     const taskList = document.getElementById("task-list");
@@ -79,4 +83,12 @@ const updateTasksList = () => {
 document.getElementById("newTask").addEventListener('click', function (e) {
     e.preventDefault();
     addTask();
+    const taskInput = document.getElementById("taskInput").value = '';
 })
+const wow = () => {
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+    });
+}
