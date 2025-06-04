@@ -122,11 +122,6 @@ button {
     align-items: center;
 }
 
-.taskItem img {
-    width: 24px;
-    height: 24px;
-}
-
 .task {
     display: flex;
     align-items: center;
@@ -146,7 +141,7 @@ button {
     cursor: pointer;
 }
 
-.completed p {
+.task.completed p {
     text-decoration: line-through;
     color: var(--second-color);
 }

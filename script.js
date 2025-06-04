@@ -1,67 +1,44 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const storedTasks = JSON.parse(localStorage.getItem('tasks'))
+let tasks = []; //make an Array for data
 
-    if (storedTasks) {
-        storedTasks.forEach((task) => tasks.push(task));
-        updateTasksList();
+document.addEventListener('DOMContentLoaded', () => { //when the page loaded
+    const storedTasks = JSON.parse(localStorage.getItem('tasks')) //save in localStorage
+
+    if (storedTasks) { //if we have data in localStorage
+        storedTasks.forEach((task) => tasks.push(task)); //add to array
+        updateTasksList(); //update the taskList in demo
         updateStats();
     }
 })
-let tasks = [];
-const saveTasks = () => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-}
-const addTask = () => {
-    const taskInput = document.getElementById("taskInput");
-    const text = taskInput.value.trim();
 
-    if (text) {
-        tasks.push({ text: text, completed: false });
-        updateTasksList();
-        updateStats();
+const saveTasks = () => {
+    localStorage.setItem('tasks', JSON.stringify(tasks)); //
+}
+
+
+document.getElementById("newTask").addEventListener('click', function (e) { //add task button
+    e.preventDefault(); // not refresh
+    addTask();
+    document.getElementById("taskInput").value = ''; //renew the input text
+})
+
+const addTask = () => {
+    const taskInput = document.getElementById("taskInput"); //access to input
+    const text = taskInput.value.trim(); //access to input value
+
+    if (text) { // if you write sth
+        tasks.push({ text: text, completed: false }); // the array must save it (the text and if it is completed or not status)
+        updateTasksList(); //show the tasklist in demo
+        updateStats(); 
         saveTasks();
     }
 }
-const toggleTaskComplete = (index) => {
-    tasks[index].completed = !tasks[index].completed;
-    updateTasksList();
-    updateStats();
-    saveTasks();
-}
-const deleteTask = (index) => {
-    tasks.splice(index, 1);
-    updateTasksList();
-    updateStats();
-    saveTasks();
-}
-const editTask = (index) => {
-    const taskInput = document.getElementById('taskInput');
-    taskInput.value = tasks[index].text;
 
-    tasks.splice(index, 1);
-    updateTasksList();
-    updateStats();
-    saveTasks();
-}
-const updateStats = () => {
-    const completeTasks = tasks.filter(task => task.completed).length;
-    const totalTasks = tasks.length;
-    const progress = (completeTasks / totalTasks) * 100
-    const progressBar = document.getElementById("progress");
-    progressBar.style.width = `${progress}%`
-
-    document.getElementById("numbers").innerText = `${completeTasks} / ${totalTasks}`;
-
-    if (tasks.length && completeTasks === totalTasks) {
-        wow();
-    }
-}
 const updateTasksList = () => {
-    const taskList = document.getElementById("task-list");
-    taskList.innerHTML = '';
-    tasks.forEach((task, index) => {
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `
+    const taskList = document.getElementById("task-list"); //access to ul of lists
+    taskList.innerHTML = '';  //to not repeat
+    tasks.forEach((task, index) => { //array for its task and index of that (each)
+        const listItem = document.createElement('li'); //create list for each task
+        listItem.innerHTML = ` 
           <div class="taskItem">
 
           <div class="task ${task.completed ? 'completed' : ''}">
@@ -75,17 +52,50 @@ const updateTasksList = () => {
            </div>
 
        </div>`;
-        listItem.addEventListener('change', () => toggleTaskComplete(index));
-        taskList.append(listItem);
+        listItem.addEventListener('change', () => toggleTaskComplete(index)); //changes on list
+        taskList.append(listItem); //ul get the lists
     })
 }
 
-document.getElementById("newTask").addEventListener('click', function (e) {
-    e.preventDefault();
-    addTask();
-    const taskInput = document.getElementById("taskInput").value = '';
-})
-const wow = () => {
+const deleteTask = (index) => {
+    tasks.splice(index, 1); //remove that task
+    updateTasksList(); //update the taskList in demo
+    updateStats();
+    saveTasks();
+}
+const editTask = (index) => {
+    const taskInput = document.getElementById('taskInput'); //access to input 
+    taskInput.value = tasks[index].text; //show the task that has chosen in the input
+
+    tasks.splice(index, 1); //remove that task
+    updateTasksList(); //update the taskList in demo
+    updateStats();
+    saveTasks();
+}
+
+const toggleTaskComplete = (index) => {
+    tasks[index].completed = !tasks[index].completed; //true<=>false
+    updateTasksList(); //update the taskList in demo
+    updateStats();
+    saveTasks();
+}
+
+const updateStats = () => {
+    const completeTasks = tasks.filter(task => task.completed).length; //length of true completed tasks
+    const totalTasks = tasks.length; // length of all tasks
+    const progress = (completeTasks / totalTasks) * 100 //percentage
+    const progressBar = document.getElementById("progress"); //access to progress
+    progressBar.style.width = `${progress}%` //show the percentage in progress
+
+    document.getElementById("numbers").innerText = `${completeTasks} / ${totalTasks}`; //show in numbers
+
+    if (tasks.length && completeTasks === totalTasks) {
+        wow(); //wow you've done
+    }
+}
+
+
+const wow = () => { //wow great
     confetti({
         particleCount: 100,
         spread: 70,
