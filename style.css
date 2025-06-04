@@ -95,5 +95,5 @@ button{
     font-weight: bold;
     border: none;
     outline: none;
-   
+    cursor: pointer;
 }
