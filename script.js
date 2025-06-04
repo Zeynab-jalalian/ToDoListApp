@@ -11,7 +11,14 @@ const addTask=()=>{
 }
 
 const updateTasksList=()=>{
-    
+    const taskList=document.getElementById("task-list");
+    taskList.innerHTML='';
+    taskList.forEach(task=>{
+        const listItem=document.createElement('li')
+        listItem.innerHTML=`
+        
+        `
+    })
 }
 
 document.getElementById("newTask").addEventListener('click', function (e) {
