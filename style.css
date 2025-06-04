@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
 * {
   margin: 0;
@@ -7,40 +7,40 @@
 }
 
 :root {
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --main-color: #34b897;
+  --glass-bg: rgba(255, 255, 255, 0.07);
+  --main-color: #1de9b6;
   --main-dark: #0a0f1a;
   --text-color: #ffffff;
-  --accent-color: #0ef0c8;
+  --accent-color: #12fcd4;
   --border-color: rgba(255, 255, 255, 0.1);
 }
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(145deg, #0a0f1a, #101826);
+  background: linear-gradient(135deg, #0a0f1a, #101d2f);
   color: var(--text-color);
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 50px 20px;
 }
 .container {
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(20px);
   background: var(--glass-bg);
   border: 1px solid var(--border-color);
-  border-radius: 20px;
+  border-radius: 18px;
   padding: 30px;
   width: 100%;
   max-width: 500px;
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.08);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
 }
 
 .stats-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .details h1 {
@@ -49,35 +49,34 @@ body {
 }
 
 .details p {
-  opacity: 0.6;
   font-size: 14px;
+  opacity: 0.7;
 }
 
 #progressBar {
   margin-top: 15px;
   width: 100%;
-  height: 10px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
 }
 
 #progress {
-  height: 10px;
+  height: 100%;
   width: 0;
   background: var(--main-color);
-  border-radius: 10px;
+  border-radius: 6px;
   transition: all 0.4s ease;
 }
 
 #numbers {
-  background: var(--main-color);
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px 16px;
+  border-radius: 10px;
   font-weight: bold;
+  border: 1px solid var(--border-color);
+  color: var(--accent-color);
+  font-size: 16px;
 }
 form {
   display: flex;
@@ -88,7 +87,7 @@ form {
 input {
   flex: 1;
   padding: 14px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--border-color);
   border-radius: 10px;
   color: var(--text-color);
@@ -114,25 +113,20 @@ button:hover {
 
 #task-list {
   list-style: none;
-  margin-top: 30px;
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
 .taskItem {
-  background: rgba(255, 255, 255, 0.03);
-  padding: 15px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 14px;
   border-radius: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border: 1px solid var(--border-color);
-  transition: background 0.3s ease;
-}
-
-.taskItem:hover {
-  background: rgba(255, 255, 255, 0.05);
 }
 
 .task {
@@ -162,19 +156,18 @@ button:hover {
 
 .taskItem img:hover {
   opacity: 1;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
-/* 📱 Responsive */
+/* Responsive */
 @media (max-width: 500px) {
   .container {
     padding: 20px;
   }
 
   #numbers {
-    width: 60px;
-    height: 60px;
-    font-size: 18px;
+    font-size: 14px;
+    padding: 10px 14px;
   }
 
   button {
