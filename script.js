@@ -13,6 +13,17 @@ const toggleTaskComplete = (index) => {
     tasks[index].completed = !tasks[index].completed;
     updateTasksList();
 }
+const deleteTask = (index) => {
+ tasks.splice(index,1);
+ updateTasksList();
+}
+const editTask = (index) => {
+ const taskInput=document.getElementById('taskInput');
+ taskInput.value=tasks[index].text;
+
+ tasks.splice(index,1);
+ updateTasksList();
+}
 const updateTasksList = () => {
     const taskList = document.getElementById("task-list");
     taskList.innerHTML = '';
