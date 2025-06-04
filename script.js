@@ -11,15 +11,15 @@ const addTask = () => {
 }
 
 const updateTasksList = () => {
-  const taskList=document.getElementById("task-list");
-  taskList.innerHTML='';
-  tasks.forEach((task,index) =>{
-    const listItem=document.createElement('li');
-    listItem.innerHTML=`
+    const taskList = document.getElementById("task-list");
+    taskList.innerHTML = '';
+    tasks.forEach((task, index) => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
           <div class="taskItem">
 
-          <div class="task ${task.completed ? 'completed':''}">
-           <input type="checkbox" class="checkbox" ${task.completed ? 'checked':''}>
+          <div class="task ${task.completed ? 'completed' : ''}">
+           <input type="checkbox" class="checkbox" ${task.completed ? 'checked' : ''}>
            <p>${task.text}</p>
           </div>
 
@@ -29,9 +29,9 @@ const updateTasksList = () => {
            </div>
 
        </div>`;
-       listItem.addEventListener('change',()=> toggleTaskComplete(index));
-       taskList.append(listItem);
-  })
+        listItem.addEventListener('change', () => toggleTaskComplete(index));
+        taskList.append(listItem);
+    })
 }
 
 document.getElementById("newTask").addEventListener('click', function (e) {
